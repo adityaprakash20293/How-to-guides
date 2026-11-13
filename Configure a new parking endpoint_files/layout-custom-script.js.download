@@ -1,0 +1,193 @@
+$(document).ready(function () {
+  changeLabel();
+  $(document).ajaxComplete(function () {
+    changeLabel();
+  });
+});
+
+function changeLabel() {
+  $('*[lang=en] .caution .title').text(
+    'CAUTION! Failure to follow these instructions may result in MINOR or MODERATE INJURY or DAMAGE to the system or property.'
+  );
+  $('*[lang=en] .warning .title').text(
+    'WARNING! Failure to follow these instructions may result in SERIOUS INJURY, INCLUDING DEATH.'
+  );
+  $('*[lang=en] .danger .title').text(
+    'DANGER! Failure to follow these instructions WILL result in SERIOUS INJURY, INCLUDING DEATH.'
+  );
+  $('*[lang=en] .important .title').text('IMPORTANT');
+
+  $('*[lang=de] .caution .title').text(
+    'VORSICHT! Die Nichteinhaltung dieser Anweisungen kann zu GERINGFÜGIGEN oder MITTELSCHWEREN VERLETZUNGEN oder zu SYSTEM- bzw. SACHSCHÄDEN führen.'
+  );
+  $('*[lang=de] .warning .title').text(
+    'WARNUNG! Die Nichteinhaltung dieser Anweisungen kann zu LEBENSGEFÄHRLICHEN VERLETZUNGEN oder zum TOD führen.'
+  );
+  $('*[lang=de] .danger .title').text(
+    'GEFAHR! Die Nichteinhaltung dieser Anweisungen WIRD zu LEBENSGEFÄHRLICHEN VERLETZUNGEN oder zum TOD führen.'
+  );
+  $('*[lang=de] .important .title').text('WICHTIG');
+
+  $('*[lang=ja] .caution .title').text(
+    '注意！この指示に従わないと、軽度または中程度の負傷や、システムまたは物品の損害を引き起こす可能性があります。'
+  );
+  $('*[lang=ja] .warning .title').text(
+    '警告！この指示に従わないと、死亡を含む重傷を引き起こす可能性があります。'
+  );
+  $('*[lang=ja] .danger .title').text(
+    '危険！この指示に従わないと、死亡を含む重傷を引き起こします。'
+  );
+  $('*[lang=ja] .important .title').text('重要');
+
+  $('*[lang=nl] .caution .title').text(
+    'LET OP! Het niet opvolgen van deze instructies kan leiden tot LICHT of MIDDELZWAAR LETSEL of SCHADE aan het systeem of eigendommen.'
+  );
+  $('*[lang=nl] .warning .title').text(
+    'WAARSCHUWING! Het niet opvolgen van deze instructies kan leiden tot ERNSTIG OF ZELFS DODELIJK LETSEL.'
+  );
+  $('*[lang=nl] .danger .title').text(
+    'GEVAAR! Het niet opvolgen van deze instructies ZAL leiden tot ERNSTIG OF ZELFS DODELIJK LETSEL.'
+  );
+  $('*[lang=nl] .important .title').text('BELANGRIJK');
+}
+
+$(document).ready(function () {
+  var searchBtn =
+    '<button type="submit" class="btn">' +
+    '<i class="fa fa-search">' +
+    '</i>' +
+    '</button>';
+  $(searchBtn).insertAfter('form.site-sidebar-search .search-field');
+  $(document).ajaxComplete(function () {
+    var searchBtn =
+      '<button type="submit" class="btn">' +
+      '<i class="fa fa-search">' +
+      '</i>' +
+      '</button>';
+    $(searchBtn).insertAfter('form.site-sidebar-search .search-field');
+  });
+});
+
+// =========================
+// --- HH gate logic ---
+// =========================
+/*
+function getCookie(cname) {
+  let name = cname + '=';
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return '';
+}
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = 'expires='+d.toUTCString();
+  document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+}
+
+const IFRAME_CODE = '<iframe src="https://gomarketing.ottomotors.com/l/92812/2022-04-27/784byw" width="100%" height="720" type="text/html" frameborder="0" allowTransparency="true" style="border: 0"></iframe>';
+
+function showGate(showTheGate) {
+  // Index and content pages are different
+  const possibleBodyContainers = document.querySelectorAll('.portal-content, .site-body');
+
+  Array.from(possibleBodyContainers).forEach(function(container) {
+    if (showTheGate) {
+      container.classList.add('container--hidden');
+
+      // Create the popup
+      const popup = document.createElement('div');
+      popup.classList.add('gate-popup');
+      const formWrapper = document.createElement('div');
+      const formPositioning = document.createElement('div');
+      formPositioning.classList.add('gate-popup__form-positioning');
+      formWrapper.classList.add('gate-popup__form-wrapper');
+      formWrapper.innerHTML = IFRAME_CODE;
+      formPositioning.appendChild(formWrapper);
+      popup.appendChild(formPositioning);
+      document.body.appendChild(popup);
+
+      // Add pardot iframe listener to set cookie and close gate when submitted
+      attachPardotListener();
+    } else {
+      // Show page content
+      container.classList.remove('container--hidden');
+
+      // Remove the popup
+      const popup = document.querySelector('.gate-popup');
+      if (popup) popup.remove();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const gateOpened = getCookie('hh-gate-opened');
+  console.log('gateOpened', gateOpened);
+
+  // Event listener that will listen for the Pardot Events
+  window.addEventListener('message', function(event) {
+    console.log({event});
+    if (event.data.message === 'PARDOT_FORM_SUCCESS') {
+      setCookie('hh-gate-opened', 'true', 365);
+      showGate(false);
+    }
+  }, false);
+
+  // If cookie not found, gate will be shown
+  if (gateOpened !== 'true') {
+    showGate(true);
+  }
+});
+*/
+// Portal page custom intro text
+
+$(document).ready(function () {
+    setWelcomeText();
+    $(document).ajaxComplete(function () {
+    setWelcomeText();
+    });
+});
+
+function setWelcomeText(){
+    for (var key in welcomeTextDict) {
+        var element = $("header.portal-header[data-portal-language=" + key +"] h1");
+        element.text(welcomeTextDict[key])
+    }
+}
+var welcomeTextDict = { "en" : "Welcome to OTTO Technical Documentation"};
+
+// Portal page custom tile images
+
+$(document).ready(function() {
+
+var icon1 = "https://docs.ottomotors.com/Files/new/GettingStarted.svg";
+var icon2 = "https://docs.ottomotors.com/Files/new/Software3.svg";
+var icon3 = "https://docs.ottomotors.com/Files/new/fleetmanager.svg";
+var icon4 = "https://docs.ottomotors.com/Files/new/whatsnew.svg";
+var icon5 = "https://docs.ottomotors.com/Files/new/Hardware.svg";
+var icon6 = "https://docs.ottomotors.com/Files/new/Attachments.svg";
+var icon7 = "https://docs.ottomotors.com/Files/new/How-To.svg";
+var icon8 = "https://docs.ottomotors.com/Files/new/Manuals.svg";
+
+$(".cat-panel-1").closest("a").prepend("<img src='" + icon1 + "'></img>");
+$(".cat-panel-2").closest("a").prepend("<img src='" + icon2 + "'></img>");
+$(".cat-panel-3").closest("a").prepend("<img src='" + icon3 + "'></img>");
+$(".cat-panel-4").closest("a").prepend("<img src='" + icon4 + "'></img>");
+$(".cat-panel-5").closest("a").prepend("<img src='" + icon5 + "'></img>");
+$(".cat-panel-6").closest("a").prepend("<img src='" + icon6 + "'></img>");
+$(".cat-panel-7").closest("a").prepend("<img src='" + icon7 + "'></img>");
+$(".cat-panel-8").closest("a").prepend("<img src='" + icon8 + "'></img>");
+
+$(".publication-icon").remove();
+
+});
